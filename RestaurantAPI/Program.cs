@@ -1,5 +1,7 @@
 using RestaurantAPI;
 using RestaurantAPI.Entities;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<RestaurantSeeder>();
 builder.Services.AddDbContext<RestaurantDbContext>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
