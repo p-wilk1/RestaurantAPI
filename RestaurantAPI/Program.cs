@@ -1,5 +1,5 @@
 using RestaurantAPI;
-
+using RestaurantAPI.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,12 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 
-//builder.Services.AddScoped<RestaurantSeeder>();
+builder.Services.AddScoped<RestaurantSeeder>();
+builder.Services.AddDbContext<RestaurantDbContext>();
 
 var app = builder.Build();
 
 var scope = app.Services.CreateScope();
-//var seeder = scope.ServiceProvider.GetRequiredService<RestaurantSeeder>();
+var seeder = scope.ServiceProvider.GetRequiredService<RestaurantSeeder>();
 
 //seeder.Seed();
 
